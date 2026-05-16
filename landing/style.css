@@ -1,0 +1,709 @@
+/* Global variables for colors */
+:root {
+    --bright-green: #3D886F;
+    --cream: rgb(253 248 240);
+    --dark-forest: #213614;
+    --light-forest: #3A631B;
+    --electric-green: #00FF88;
+    --light-green: rgb(195 219 192);
+}
+
+body{
+    /* Removes default browser white space around the edge */
+    margin: 0;
+    padding: 0;
+}
+
+/* Set fix layout for all pages */
+.page_1, .page_2, .page_4{
+    overflow: hidden;
+    padding: 0 5%;
+}
+
+.page_1{
+    background-image: url("./public/background.png");
+    background-size: cover;          /* fills screen */
+    background-position: center;     /* keeps image centered */
+    background-repeat: no-repeat;    /* no tiling */
+    min-height: 100dvh; /* Forces the page to be at least the full height of the screen */
+    box-sizing: border-box; /* Includes padding in the total width calculation (essential for 100% width) */
+    color: white;
+}
+
+header{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items: center; /* align items and justify items set to center */
+    margin: 5% 0;
+}
+
+#logo{
+    width: 150px;
+}
+
+.nav_bar{
+    display: flex;
+    gap: 20px;
+}
+
+.nav_bar a{
+    position: relative; /* essential as ::after use absolute */
+    padding-bottom: 5px;
+    font-size: 1.375rem;
+    font-family: "Questrial", sans-serif;
+    font-weight: bold;
+    text-decoration: none; /* remove default style */
+    color: rgb(165, 165, 165);
+}
+
+/* Underline animatiion */
+.nav_bar a::after{
+    content: ""; /* Necessary for pseudo-elements to show up */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%; /* hide the line */
+    height: 4px;
+    background-color: var(--light-forest);
+    transition: width ease 0.3s; /* Smoothly expands the line when hovering */
+}
+
+.nav_bar a:hover::after{
+    width: 100%; /* Expands the underline to full width on hover */
+}
+
+.nav_bar a:hover{
+    color: white;
+    transition: color ease .3s;
+}
+
+#select_nav{
+    border-width: 0 0 4px;
+    border-style: solid;
+    border-color: var(--light-forest);
+    color: white;
+}
+
+/* Ensure selected nav does not have line when hover */
+#select_nav:hover::after{
+    width: 0%;
+}
+
+section{
+    width: 700px;
+    max-width: 90%;
+    margin: auto;
+    text-align: center;
+}
+
+section h2{
+    font-family: "Questrial", sans-serif;
+    font-size: 2.2rem;
+    font-weight: normal;
+}
+
+section h1{
+    font-family: "Dela Gothic One", sans-serif;
+    font-size: 5rem;
+}
+
+section button {
+    padding: 20px 40px;
+    margin-bottom: 20px;
+    font-family: "Questrial", sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 1px; /* set horizontal space between text */
+    cursor: pointer;
+    color: rgb(228, 229, 188);
+
+    background-color: var(--light-forest);
+    color: white;
+    border: solid var(--cream) 2px;
+    border-radius: 15px;
+
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+section button:hover {
+    background-color: rgb(77, 123, 84); 
+    transform: translateY(-3px); /* when hover move down slightly */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); /* soft black shadow that extends 6px below */
+}
+
+section button:active {
+    transform: translateY(-1px); /* when click move down slightly */
+}
+
+section button a{
+    text-decoration: none;
+    color: inherit;
+}
+
+header, section h2, section h1, section button{
+    opacity: 0;
+    animation: rise_up 0.8s ease-out forwards; /* forwards keep the styles of the last keyframes so element doesn't return to 0 opacity */
+}
+
+section h2{
+    animation-delay: 0.2s;
+}
+
+section h1{
+    animation-delay: 0.4s;
+}
+
+section button{
+    animation-delay: 0.6s;
+}
+
+.page_2{
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    background-image:
+    linear-gradient(
+      to bottom,
+      rgba(5, 7, 5, 0.95),
+      rgba(33, 54, 20, 0.9),
+      rgba(33, 54, 20, 0.95)
+    ),
+    url("./public/page_2_bg.avif"); /* add color to the background image */
+  
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 5% 0;
+}
+
+.page_2::before {
+  content: "";
+  position: absolute; /* position relative to nearest ancestor */
+  top: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient( 
+    to bottom,
+    rgba(255,255,255,0.15),
+    transparent
+  ); /* create a soft-white fade */
+  z-index: -1; /* behind elements so doesn't block them */
+}
+
+.main_container{
+    padding: 0 5%;
+}
+
+.page_2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 150px;
+  width: 100%;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.6),
+    transparent
+  );
+  z-index: -1;
+}
+
+/* target title class that doesn't have no_margin class */
+.title:not(.no_margin){
+    margin-top: 5%;
+}
+
+.title{
+    text-align: center;
+}
+
+.title h1{
+    font-size: 3rem;
+    margin-bottom: .5rem;
+    font-family: "Dela Gothic One", sans-serif;
+    color: var(--cream);
+}
+
+.title p{
+    font-size: 1.2rem;
+    margin-top: 0;
+    font-family: "Inter", sans-serif;
+    color: lightgreen;
+}
+
+.stats_container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: space-between;
+    padding: 5%;
+}
+
+.stats_card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.stats_card img{
+    width: 40px;
+}
+
+.stats_card h1{
+    font-size: 3rem;
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+    color: var(--cream);
+    font-family: "Dela Gothic One", sans-serif;
+}
+
+.stats_card p{
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: var(--light-green);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.stats_card:not(:last-child){
+    border-right: solid var(--light-forest) 1px;
+}
+
+.stats_card img, .stats_card h1, .stats_card p {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.active.stats_card img, .active.stats_card h1, .active.stats_card p{
+    opacity: 0;
+    animation: rise_up 0.8s ease-out forwards; 
+}
+
+.active.stats_card img{
+    animation-delay: 0.2s;
+}
+
+.active.stats_card h1{
+    animation-delay: 0.4s;
+}
+
+.active.stats_card p{
+    animation-delay: 0.6s;
+}
+
+hr{
+    margin: 5%;
+}
+
+.events_container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: space-between;
+    padding: 5%;
+    gap: 20px;
+}
+
+.events_card {
+    position: relative; 
+    z-index: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 25px;
+    border-radius: 20px; 
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.4s ease; 
+    cursor: pointer;
+}
+
+.events_card::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8));
+    z-index: -1; 
+    transition: opacity 0.4s ease; 
+    opacity: 1;
+}
+
+.events_card h1{
+    font-family: "Outfit", sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.events_card p{
+    font-family: "Inter", monospace;
+    font-size: .9rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.events_card:hover{
+    transform: scale(1.02);
+}
+
+.events_card:hover::after{
+    opacity: 0.5;
+}
+
+.events_card .points{
+    color: var(--electric-green);
+    font-weight: bold;
+}
+
+.event_1 {
+    background-image: url("./public/plant_event.jpg");
+}
+
+.event_2{
+    background-image: url("./public/cleanup_event.png");
+}
+
+.event_3{
+    background-image: url("./public/recycle_event.png");
+}
+
+.event_4{
+    background-image: url("./public/e_waste_event.png");
+}
+
+.events_card h1, .events_card p {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.events_card.active h1, .events_card.active p{
+    opacity: 0;
+    animation: rise_up 0.8s ease-out forwards; 
+}
+
+.events_card.active h1{
+    animation-delay: 0.2s;
+}
+
+.events_card.active p{
+    animation-delay: 0.4s;
+}
+
+.events_card.active .points{
+    animation-delay: 0.6s;
+}
+
+.page_4{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),url("./public/page_4_bg.png");
+    background-size: cover;          /* fills screen */
+    background-position: center; /* keeps image centered */
+    background-repeat: no-repeat;    /* no tiling */
+    background-attachment: fixed;
+}
+
+.page_4 .title h1{
+    color: white;
+}
+
+.page_4 .title p{
+    color: #E0E0E0;
+}
+
+.steps_container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: space-between;
+    padding: 5%;
+    gap: 5%;
+}
+
+.steps_card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+    border-radius: 2rem;
+    color: var(--cream);
+
+    background-color: rgba(33, 54, 20, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); /* For Safari support */
+
+    /* 3. Thin, semi-transparent border to define edges */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    /* 4. Shadow for depth */
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+
+    /* 5. Transition for hover effects */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+/* Optional: Make it slightly lighter on hover */
+.steps_card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    background-color: rgba(33, 54, 20, 0.75); /* A bit more opaque on hover */
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.steps_card h1{
+    font-family: "Outfit", sans-serif;
+    font-size: 2rem;
+    margin-bottom: 0;
+}
+
+.steps_card p{
+    font-family: "Inter", sans-serif;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+}
+
+.steps_header{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.steps_header h1{
+    font-family: "Roboto Mono", monospace;
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.steps_header img{
+    width: 50px;        
+    height: 50px;  
+    padding: 10px;
+    background-color: var(--cream);
+    border-radius: 50%;
+}
+
+.steps_card .steps_header, .steps_card h1, .steps_card p {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.steps_card .steps_header, .steps_card.active h1, .steps_card.active p{
+    opacity: 0;
+    animation: rise_up 0.8s ease-out forwards; 
+}
+
+.steps_card.active .steps_header{
+    animation-delay: 0.2s;
+}
+
+.steps_card.active h1{
+    animation-delay: 0.4s;
+}
+
+.steps_card.active p{
+    animation-delay: 0.6s;
+}
+
+.page_4 > div:last-child {
+    text-align: center; /* centers inline/inline-block children */
+}
+
+/* Muted, elegant CTA Link */
+.cta-link {
+    display: inline-block;
+    padding: 18px 50px;
+    margin: 20px 0 100px 0;
+    font-family: "Questrial", sans-serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    color: var(--cream); /* soft, readable */
+    
+    /* Muted forest colors */
+    background-color: rgba(33, 54, 20, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); /* For Safari support */
+
+    /* 3. Thin, semi-transparent border to define edges */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    /* 4. Shadow for depth */
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.cta-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    background-color: rgba(33, 54, 20, 0.85); /* A bit more opaque on hover */
+    border-color: rgba(255, 255, 255, 0.4);
+    color: white;
+}
+
+/* Active/Click effect */
+.cta-link:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.join_us .title h1, .join_us .title p, .join_us .cta-link {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.join_us.active .title h1, .join_us.active .title p, .join_us.active .cta-link{
+    opacity: 0;
+    animation: rise_up 0.8s ease-out forwards; 
+}
+
+.join_us .title h1{
+    animation-delay: 0.2s;
+}
+
+.join_us .title p{
+    animation-delay: 0.4s;
+}
+
+.join_us .cta-link{
+    animation-delay: 0.6s;
+}
+
+@media(max-width: 1024px){
+    .stats_container{
+        grid-template-columns: 1fr;
+    }
+
+    .stats_card{
+        margin-top: 5%;
+    }
+
+    .stats_card:not(:last-child){
+        border-right: 0px;
+        border-bottom: solid var(--light-forest) 1px;
+    }
+
+    .events_container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .steps_container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 768px){
+    .nav_bar a{
+        font-size: 1.4rem;
+        margin-bottom: 20%;
+    }
+
+    #logo{
+        width: 100px;
+    }
+
+    .title h1{
+        font-size: 2.2rem;    
+    }
+
+    .stats_card h1{
+        font-size: 2.2rem;
+    }
+
+    .title p{
+        font-size: 1.3rem;
+    }
+
+    header{
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .events_container{
+        grid-template-columns: 1fr;
+    }
+
+    .steps_container{
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 10% 5%;
+    }
+}
+
+@media(max-width: 400px) {
+    .nav_bar a{
+        font-size: 1.2rem;
+        margin-bottom: 20%;
+    }
+
+    header{
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    section h2{
+        font-size: 2rem;
+    }
+
+    section h1{
+        font-size: 3rem;
+    }
+
+    .title h1{
+        font-size: 1.5rem;  
+        margin-top: 2rem;  
+    }
+
+    .title p{
+        font-size: 0.8rem;
+    }
+
+    .stats_card{
+        margin-top: 15%;
+    }
+
+    .stats_card img{
+        width: 30px;
+    }
+
+    .stats_card h1{
+        font-size: 1.5rem;
+    }
+
+    .stats_card p{
+        font-size: 0.8rem;
+    }
+
+    .events_card h1{
+        font-size: 1.5rem;
+    }
+
+    .events_card p{
+        font-size: 0.8rem;
+    }
+
+    .steps_card{
+        padding: 30px;
+    }
+
+    .steps_card h1{
+        font-size: 1.5rem;
+    }
+
+    .steps_card p{
+        font-size: 0.8rem;
+    }
+
+    .cta-link{
+        font-size: 1rem;
+    }
+}
+
+@keyframes rise_up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
