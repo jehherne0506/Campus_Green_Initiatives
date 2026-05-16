@@ -1,0 +1,347 @@
+/* Preset variable for color */
+:root {
+    --mid-green: rgb(38 65 21);
+    --bright-green: #3D886F;
+    --cream: rgb(253 248 240);
+    --dark-forest: #213614;
+    --light-forest: #3A631B;
+    --white: #FFFFFF;
+    --text-muted: #94A3B8;
+    --gray-border: rgba(255, 255, 255, 0.1);
+    --electric-green: #00FF88;
+}
+
+.add-voucher, .all-vouchers{
+    margin-top: 2rem;
+    padding: 1.5rem 2rem;
+    border-radius: 20px;
+    background-color: var(--white);
+}
+
+.add-voucher h1, .all-vouchers h1, .edit-voucher-modal h1{
+    color: var(--light-forest);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.voucher-input{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 2rem;
+}
+
+.input-row{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.input-field{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input-field input{
+    height: 38px;
+}
+
+.input-field input, .input-field textarea{
+    padding: 10px 10px;
+    border-radius: 5px;
+    border: var(--dark-forest) 1.5px solid;
+    width: 100%; 
+    box-sizing: border-box;
+}
+
+.create-voucher, .edit-voucher{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.create-voucher-btn, .edit-voucher-btn{
+    color: white;
+    background-color: var(--bright-green);
+    padding: 12px 18px;
+    border: 1px var(--light-forest) solid;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.create-voucher-btn:hover, .edit-voucher-btn:hover{
+    background-color: #1b9c5e;
+    transition: all .3s ease-in-out;
+}
+
+.vouchers-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 2rem;
+}
+
+.voucher-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: var(--cream) 3px solid;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+
+.badge {
+  background-color: #2d4628;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: #1a1a1a;
+}
+
+.description {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.4;
+  margin: 10px 0;
+}
+
+.card-header {
+    display: flex;    
+    justify-content: space-between; 
+    align-items: center;
+    gap: 12px;         
+    margin-bottom: 12px;
+}
+
+
+/* The divider line above the footer */
+.card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-bottom: 20px;
+}
+
+.card-title{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-title h2{
+    margin: 0;
+}
+
+.card-content img{
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+}
+
+.card-footer {
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.points, .status {
+  font-weight: 800;
+  color: #45a432;
+  font-size: 1.1rem;
+}
+
+.card-actions{
+    display: flex;
+    gap: 15px;
+}
+
+.card-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: transform 0.2s ease;
+}
+
+.card-actions button:hover{
+    transform: scale(1.1);
+}
+
+.card-actions button img{
+    width: 20px;
+    height: 20px;
+    border-radius: 0;
+}
+
+.blur-background{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Make page darker */
+    backdrop-filter: blur(5px); /* Blur the page */
+}
+
+.blur-background.active{
+    display: flex;
+}
+
+.modal-card{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--cream);
+    padding: 30px 50px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    max-width: 400px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.modal-icon img{
+    width: 40px;
+    height: 40px;
+}
+
+
+.btn-confirm {
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-secondary {
+    background: #d6d2d2;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-secondary:hover{
+    color: red;
+    transition: all 0.3s ease-in;
+}
+
+.edit-voucher-modal{
+    position: relative;;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    border-radius: 15px;
+    width: 80%
+}
+
+.edit-voucher-modal h1{
+    margin: 0;
+}
+
+.close-modal{
+    position: absolute;
+    font-size: 50px;
+    top: 15px;
+    right: 40px;
+    cursor: pointer;
+}
+
+.logo-field{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#editLogo{
+    flex: 1;
+}
+
+#editLogoPreview{
+    width: 38px;
+    height: 38px;
+    margin-left: 5px;
+}
+
+@media (max-width: 1300px) {
+    .input-row{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 1100px){
+    .vouchers-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 850px){
+    .title{
+        font-size: 1rem;
+    }
+
+    .card-content img{
+        width: 50px;
+        height: 50px;
+    }
+
+    .vouchers-container{
+        grid-template-columns: 1fr;
+    }
+
+    .card-title{
+        justify-content: start;
+    }
+
+    .edit-voucher-modal{
+        width: 90%;
+    }
+
+    .input-row{
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 400px){
+    .edit-voucher-modal h1{
+        width: 80%;
+        margin: 0;
+    }
+
+    .card-header{
+        flex-direction: column-reverse;
+        align-items: end;
+    }
+}

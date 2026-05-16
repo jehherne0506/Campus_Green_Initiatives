@@ -1,0 +1,300 @@
+/* Preset variable for color */
+:root {
+    --mid-green: rgb(38 65 21);
+    --bright-green: #3D886F;
+    --cream: rgb(253 248 240);
+    --dark-forest: #213614;
+    --light-forest: #3A631B;
+    --white: #FFFFFF;
+    --text-muted: #94A3B8;
+    --gray-border: rgba(255, 255, 255, 0.1);
+    --electric-green: #00FF88;
+}
+
+/* Remove default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*  forces element to include its content, padding, and border in their specific height and width */
+    font-family: 'Roboto', sans-serif; 
+}
+
+h1, h2, h4 {
+    font-family: 'Poppins', sans-serif; 
+}
+
+.main-wrapper {
+    background-color: transparent;
+    min-height: 100vh;
+}
+
+/* Side Navigation Bar */
+.sidebar {
+    position: fixed; /* Remain in same place even when scroll */
+    display: flex;
+    flex-direction: column;
+    width: 260px; /* Fix width for consistency */
+    height: 100vh; /* Take the full vertical height of the browser */
+    padding: 40px 20px;
+    color: var(--white);
+    background-color: var(--dark-forest);
+    border-right: 2px solid var(--gray-border);
+}
+
+/* Top Section of Navigation Bar */
+.top-sidebar {
+    display: flex;
+    width: 100%;
+    justify-content: center; 
+    align-items: center;    
+    margin-bottom: 40px;
+}
+
+/* Top Section of Navigation Bar where Image has an alt of "Close Icon" */
+.top-sidebar img[alt="Close Icon"]{
+    display: none;/* Don't display the close icon of navigation bar by default */
+}
+
+
+/* Top Section of Navigation Bar where Image has an alt of "EcoRiseAPU Logo" */
+.top-sidebar img[alt="EcoRiseAPU Logo"] {
+    height: 80px; 
+    width: auto;
+}
+
+.close-sidebar-btn {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    height: 20px;
+    cursor: pointer;
+    display: none;
+    z-index: 999;
+    width: 20px;
+}
+
+.close-sidebar-btn.active{
+    display:block;
+}
+
+/* All Links of Navigation Bar */
+.nav-links {
+    list-style: none; /* Remove default li style */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Links of Navigation Bar */
+.nav-links li {
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+/* Each Link of Navigation Bar */
+.nav-links li:hover {
+    background-color: var(--mid-green);
+    opacity: 1; /* Make link stand out when hover */
+}
+
+/* Link of Navigation Bar that contain "active_nav" class */
+.nav-links li.active_nav {
+    background: linear-gradient(90deg, var(--light-forest) 20%, transparent 100%); /* Light Forest color for 20% of width and fade to transparent in right direction */
+    border-left: 3px solid var(--electric-green);
+    border-radius: 4px 12px 12px 4px;
+    opacity: 1;
+    font-weight: 600;
+}
+
+/* Anchor tag of Link of Navigation Bar */
+.nav-links li a {
+    text-decoration: none; /* Remove default anchor tag style */
+    color: var(--cream);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Icon of Anchor tag of Link of Navigation Bar */
+.nav-links li a img{
+    width: 18px; /* Set fixed height */
+}
+
+.signout-item{
+    width: 100%;
+    margin-top: auto;
+}
+
+.signout-item:hover {
+    background-color: #8B0000 !important; /* dark red */
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Main Content */
+.main-wrapper {
+    margin-left: 260px; /* Don't intercept with navigation bar */
+    padding: 3%;
+    width: calc(100% - 260px);
+    background-color: var(--cream);
+}
+
+/* Header of Main Content */
+.top-header {
+    display: flex;
+    justify-content: flex-end; /* Ensure account picture and name is positioned right side of page */
+    margin-bottom: 30px;
+}
+
+/* Hamburger Menu */
+.top-header .hamburger-menu{
+    display: none;
+}
+
+.hamburger-menu:hover {
+    cursor: pointer;
+}
+
+/* EcoRiseAPU Logo */
+.top-header .logo-icon{
+    display: none;
+}
+
+/* User Profile Section */
+.user-profile {
+    display: flex;
+    align-items: center; /* Align vertically center */
+    gap: 15px;
+}
+
+/* User Profile Image */
+.user-icon {
+    width: 50px; /* Fixed width for consistency */
+    height: 50px;
+    border-radius: 50%; /* Ensure circle shape */
+    border: 2px solid black;
+    object-fit: cover; /* Image size is scale to the fix width and height */
+}
+
+/* User Profile Name */
+.user-text strong { 
+    display: block; 
+    font-size: 1rem; 
+}
+
+/* User Profile Role */
+.user-text small { 
+    color: var(--dark-forest); 
+    font-size: 0.75rem; 
+    font-weight: bold; 
+}
+
+.page-heading h1{
+    font-size: 3rem;
+    color: var(--dark-forest);
+}
+
+.page-heading p{
+    margin: .5rem 0;
+    color: var(--light-forest);
+}
+
+/* --- Responsive Design: Mobile Phones (max-width 768px) --- */
+@media(max-width: 768px) {
+    /* Remove sidebar margin so content fills screen */
+    .main-wrapper{
+        margin-left: 0px;
+        width: 100%;
+        padding: 5%;
+    }
+
+    .page-heading h1 {
+        font-size: 2rem;
+    }
+
+    .page-heading p{
+        font-size: .8rem;
+    }
+
+    /* Hide sidebar off-screen by default on mobile */
+    .sidebar{
+        left: -260px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* Class to slide sidebar in when Hamburger is clicked */
+    .sidebar.active{
+        left: 0px;
+        opacity: 1;
+        visibility: visible;
+        z-index: 1;
+    }
+    
+    .top-header{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+    }
+    
+    /* Allow header elements to size naturally */
+    .top-header .logo-icon, 
+    .top-header .hamburger-menu, 
+    .top-header .user-profile {
+        width: auto; 
+        display: flex;
+        align-items: center;
+    }
+
+    /* Standardize icon sizes for mobile header */
+    .top-header .hamburger-menu img {
+        height: 35px; 
+        width: auto;
+    }
+
+    .top-header .logo-icon img {
+        height: 45px; 
+        width: auto;
+    }
+
+    .top-header .user-icon {
+        height: 45px; 
+        width: 45px;
+        border-radius: 50%;
+        object-fit: cover;
+    } /* Hide user name text on small screens */
+    .user-text{
+        display: none;
+    }
+
+    .top-sidebar{
+        justify-content: end; 
+    }
+
+    /* Show Close Icon inside Sidebar on mobile */
+    .top-sidebar img[alt="Close Icon"] {
+        display: block;
+        height: 24px;
+        width: auto;
+        cursor: pointer;
+        opacity: 0.7;
+        transition: 0.3s;
+    }
+
+    .top-sidebar img[alt="Close Icon"]:hover {
+        opacity: 1;
+    }
+
+    /* Hide main logo inside sidebar on mobile (since it's in the header) */
+    .top-sidebar img[alt="EcoRiseAPU Logo"] {
+        display: none;
+    }
+}
