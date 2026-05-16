@@ -1,0 +1,319 @@
+/* Preset variable for color */
+:root {
+    --mid-green: rgb(38 65 21);
+    --bright-green: #3D886F;
+    --cream: rgb(253 248 240);
+    --dark-forest: #213614;
+    --light-forest: #3A631B;
+    --white: #FFFFFF;
+    --text-muted: #94A3B8;
+    --gray-border: rgba(255, 255, 255, 0.1);
+    --electric-green: #00FF88;
+}
+
+.events_selection, .pending_approval, .attendance_overview{
+    margin-top: 2rem;
+    padding: 1.5rem 2rem;
+    border-radius: 20px;
+    background-color: var(--white);
+}
+
+.events_selection h1, .pending_approval h1, .attendance_overview h1{
+    color: var(--light-forest);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.selection_header{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
+    
+}
+
+/* Flexbox layout to align the buttons in a row */
+.all_events {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* Base Button Styling */
+.all_events button {
+    padding: 10px 20px;
+    border-radius: 25px; /* Gives the buttons a modern 'pill' shape */
+    background-color: #f1f3f5; /* Subtle grey for unselected events */
+    color: #666;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease; /* Smooth transition for hover effects */
+}
+
+/* Hover effect for inactive buttons */
+.all_events button:hover:not(.active) {
+    background-color: #e2e6ea;
+    color: #333;
+}
+
+/* Active Button Styling */
+.all_events button.active {
+    background-color: #e8f5e9; /* Light green background */
+    color: #27ae60; /* EcoRise bold green text */
+    border: 2px solid #27ae60; /* Green border to make it pop */
+    box-shadow: 0 4px 6px rgba(39, 174, 96, 0.1); /* Soft green shadow */
+}
+
+.event_stats{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.stats_container{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cream);
+    border: var(--light-forest) 2px solid;
+    border-radius: 20px;
+}
+
+.all_approvals{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 30px;
+}
+
+.approval_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--cream);
+    border-radius: 20px;
+    border: var(--light-forest) 2px solid;
+}
+
+.approval_container img{
+    width: 100%;
+    border-radius: 20px;
+}
+
+.approval_data{
+    padding: 10px 20px;
+}
+
+.approval_data .email{
+    color: var(--mid-green);
+    font-size: .9rem;
+}
+
+.approval_data .description{
+    font-family: sans-serif;
+    margin: .5rem 0;
+}
+
+.approval_user_info{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--dark-forest);
+}
+
+.approval_user_info img{
+    width: 50px;
+}
+
+.btn-actions{
+    display: flex;
+    margin: 1rem 0;
+    padding: 0 20px;
+    gap: 10px;
+}
+
+.btn-actions button{
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-actions button {
+    background: transparent;
+    font-weight: 500;
+}
+
+.approve {
+    border: 2px solid #5b8e7d;
+    color: #5b8e7d;
+}
+
+.approve:hover {
+    background-color: #5b8e7d;
+    color: white;
+    transition: all .4s ease-in-out;
+}
+
+.reject {
+    border: 2px solid #b36b6b;
+    color: #b36b6b;
+}
+
+.reject:hover {
+    background-color: #b36b6b;
+    color: white;
+    transition: all .4s ease-in-out;
+}
+
+.attendance-container {
+    padding: 20px;
+    font-family: sans-serif;
+}
+
+.attendance-table {
+    width: 100%;
+    border-collapse: collapse; /* Remove table border */
+    margin-top: 20px;
+}
+
+.attendance-table th, .attendance-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.attendance-table th {
+    background-color: #f8f9fa;
+    color: #555;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.attendance-table thead th {
+    background-color: transparent;
+    color: #333;
+    font-weight: 700;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+}
+
+.status-present { 
+    color: #5b8e7d; 
+    font-weight: bold; 
+}
+
+.status-pending, .status-registered { 
+    color: #b36b6b; 
+    font-weight: bold; 
+}
+
+.status-absent { 
+    color: #ee5252;
+    font-weight: bold; 
+}
+
+@media (max-width: 1250px){
+    .all_approvals{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .approval_user_info h2{
+        font-size: 1.2rem;
+    }
+
+    .approval_data .email{
+        font-size: .7rem;
+    }
+
+    .approval_data .description{
+        font-size: .9rem;
+    }
+}
+
+@media (max-width: 1024px){
+    .event_stats{
+        flex-direction: column;
+    }
+
+    .all_approvals{
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .attendance-table thead {
+        display: none;
+    }
+
+    /* Stack record vertically */
+    .attendance-table, .attendance-table tbody, .attendance-table tr, .attendance-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .attendance-table tr {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .attendance-table td {
+        text-align: right;
+        padding: 10px 15px;
+        position: relative;
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+    .attendance-table td:last-child {
+        border-bottom: none;
+    }
+
+    /* Insert the column name using the data-label attribute */
+    .attendance-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        font-weight: 600;
+        color: #888;
+        text-transform: capitalize;
+    }
+}
+
+@media (max-width: 520px){
+    .selection_header{
+        grid-template-columns: none;
+        grid-template-rows: 1fr;
+    }
+
+    .event_stats{
+        flex-direction: row;
+        margin-top: 30px;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 400px) {
+    .attendance-table td {
+        text-align: left; /* Switch data to the left */
+        padding-left: 15px; /* Reset padding */
+        padding-top: 35px; /* Create space for the label above */
+    }
+
+    .attendance-table td::before {
+        top: 10px; /* Move label to the top of the cell */
+        left: 15px;
+        width: 100%;
+        padding-bottom: 2px;
+    }
+}
