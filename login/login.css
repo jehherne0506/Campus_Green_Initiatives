@@ -1,0 +1,328 @@
+/* Global Box Sizing */
+*{
+    box-sizing: border-box; /* Forces element to include padding and border inside width and height */
+}
+
+/* Body Styling */
+body {
+    margin: 0;
+    padding: 40px 0;
+    font-family: 'Segoe UI', sans-serif; 
+
+    /* Diagonal gradient background (fallback if video fails) */
+    background: linear-gradient(135deg, #134E5E 0%, #71B280 100%);
+
+    /* Center login container horizontally and vertically */
+    display: flex;
+    justify-content: center;
+    min-height: 100dvh; /* Full dynamic viewport height */
+}
+
+/* Background Video */
+.back-video{
+    position: fixed; /* Stay fixed behind everything */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Fill screen without distortion */
+    z-index: -2; /* Place behind overlay and content */
+}
+
+/* Video Overlay Layer */
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* Soft diagonal white-to-dark overlay */
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.15),
+        rgba(0,0,0,0.25)
+    );
+
+    backdrop-filter: blur(2px); /* Slight blur for better readability */
+    z-index: -1;
+}
+
+/* Main Login Container */
+.login{
+    width: 900px;        
+    max-width: 90%;   
+    height: auto;     
+
+    background-color: #FFFFFF;
+    display: flex;     
+    border-radius: 20px; 
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); 
+    position: relative; /* Required for animated border pseudo-elements */
+}
+
+/* Custom Property for Rotating Gradient Border */
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+/* Animated Gradient Border Effect */
+.login::after, .login::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%; /* Center pseudo-element */
+
+    height: 100%;
+    width: 100%;
+
+    background-image: conic-gradient(
+        from var(--angle),
+        #2E7D32,
+        #76FF03,
+        #FFFF00,
+        #2E7D32
+    );
+
+    z-index: -1;
+    border-radius: 20px;
+    padding: 3px; /* Controls border thickness */
+    animation: spin 6s linear infinite; /* Continuous rotation */
+}
+
+/* Glow Effect Behind Border */
+.login::before{
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}
+
+/* Left Decorative Side Panel */
+.side-image {
+    flex: 1;
+    width: 100%;
+    height: auto;
+
+    background: linear-gradient(135deg, #2ab7ca 0%, #85d857 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 20px 0 0 20px;
+}
+
+/* Styled Text Element */
+#element{
+    font-weight: 600;
+}
+
+/* Highlighted Word Styling */
+#highlight_word{
+    font-weight: 800;
+    text-transform: uppercase;
+    color: gold;
+    text-shadow: 0px 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Login Form Container */
+.login_form {
+    flex: 1;
+    padding: 2rem; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Logo Styling */
+#logo {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+/* Login Title */
+#title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 3rem;
+    font-weight: 600;
+    font-family:'Lucida Sans', Geneva, Verdana, sans-serif;
+}
+
+/* Form Layout */
+form {
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Field Wrapper */
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Label Styling */
+label {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 500;
+}
+
+/* Input Field Styling */
+.input_field {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #a6a2a2;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #fafafa;
+
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Error State for Input */
+.input_field.error_border {
+    border: 2px solid #ff4d4d !important;
+    background-color: #fff2f2;
+}
+
+/* Focus State for Input */
+.input_field:focus {
+    border-color: #2ab7ca;
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(42, 183, 202, 0.1);
+}
+
+/* Small Error Message */
+.error-message {
+    color: #ff4d4d;
+    font-size: 0.8rem;
+    display: block; /* Ensures it appears below input */
+}
+
+.system-error{
+    margin-bottom: 1rem;
+    padding: 10px 20px;
+    border: 2px solid #ff4d4d !important;
+    background-color: #fff2f2;
+    border-radius: 8px;
+}
+
+/* Password Field Container */
+.password_box{
+    position: relative;
+}
+
+/* Eye Icon Positioning */
+.password_icon img{
+    position: absolute;
+    width: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    cursor: pointer;
+}
+
+/* Default Icon States */
+.eye_close{
+    display: block;
+}
+
+.eye_open{
+    display: none;
+}
+
+/* Toggle Icon Visibility when Password is Visible */
+.password_box.visible .eye_close{
+    display: none;
+}
+
+.password_box.visible .eye_open{
+    display: block;
+}
+
+/* Switch Mode Text (Login/Register) */
+#switch_mode{
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+}
+
+/* Login Button */
+.sign-in {
+    padding: 1.5rem;
+    width: 100%;
+    background-color: rgb(19, 214, 139);
+    color: white;
+    border: none;
+    border-radius: 8px;
+
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+/* Hover Effect for Login Button */
+.sign-in:hover {
+    transform: translateY(-2px); 
+    box-shadow: 0 5px 15px rgba(42, 183, 202, 0.4);
+    transition: 
+        transform 0.3s ease-in,
+        box-shadow 0.3s ease-in;
+}
+
+/* --- Responsive Design: Tablets (max-width 768px) --- */
+@media screen and (max-width: 768px){
+    .side-image{
+        display: none; /* Hide decorative panel on smaller screens */
+    }
+}
+
+/* --- Responsive Design: Small Mobile (max-width 400px) --- */
+@media screen and (max-width: 400px) {
+
+    .login {
+        width: 100%;
+    }
+
+    .login_form {
+        padding: 1rem;
+    }
+
+    .input_field {
+        padding: 0.7rem;
+        font-size: 0.9rem;
+    }
+
+    .sign-in {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+
+    #title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Rotating Border Animation */
+@keyframes spin {
+    from{
+        --angle: 0deg;
+    }
+    to{
+        --angle: 360deg;
+    }
+}
