@@ -1,0 +1,232 @@
+/* Preset variable for color */
+:root {
+    --mid-green: rgb(38 65 21);
+    --bright-green: #3D886F;
+    --cream: rgb(253 248 240);
+    --dark-forest: #213614;
+    --light-forest: #3A631B;
+    --white: #FFFFFF;
+    --text-muted: #94A3B8;
+    --gray-border: rgba(255, 255, 255, 0.1);
+    --electric-green: #00FF88;
+}
+
+/* Remove default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*  forces element to include its content, padding, and border in their specific height and width */
+    font-family: 'Roboto', sans-serif; 
+}
+
+h1, h2, h4 {
+    font-family: 'Poppins', sans-serif; 
+}
+
+.leaderboard-container {
+    max-width: 900px;
+    margin:  4rem auto;
+}
+
+.podium-section{
+    display: flex;
+    justify-content: space-around;
+    margin: 40px 0 60px 0;
+}
+
+.podium-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--white);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(33, 54, 20, 0.08);
+    position: relative;
+    width: 30%;
+    transition: transform 0.3s ease;
+}
+
+.podium-card:hover{
+    transform: translateY(-5px);
+}
+
+.podium-card h4 {
+    font-size: 1.1rem;
+    color: var(--dark-forest);
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.podium-card p {
+    font-weight: 800;
+    color: var(--bright-green);
+    font-size: 0.8rem;
+}
+
+.podium-avatar{
+    position: relative;
+}
+
+.podium-avatar img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--white);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.podium-badge{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.gold { background: linear-gradient(135deg, #FBBF24, #F59E0B); }
+.silver { background: linear-gradient(135deg, #94A3B8, #64748B); }
+.bronze { background: linear-gradient(135deg, #D97706, #B45309); }
+
+.rank-1{
+    transform: scale(1.15);
+    border: 3px solid #FBBF24;
+    box-shadow: 0 0 10px #FBBF24;
+}
+
+.rank-1:hover{
+    transform: scale(1.15) translateY(-5px);
+}
+
+.rank-2{
+    border: 2px solid #94A3B8;
+    box-shadow: 0 0 10px #94A3B8;
+}
+
+.rank-3{
+    border: 2px solid #D97706;
+    box-shadow: 0 0 10px #D97706;
+}
+
+.ranking-list{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.rank-item{
+    display: flex;
+    align-items: center;
+    background: var(--white);
+    padding: 15px 25px;
+    border-radius: 16px;
+    border: 1px solid rgba(33, 54, 20, 0.05);
+    box-shadow: 0 4px 10px rgba(33, 54, 20, 0.03);
+    transition: all 0.2s ease;
+}
+
+.rank-item:hover {
+    box-shadow: 0 8px 15px rgba(33, 54, 20, 0.08);
+    transform: translateX(5px);
+}
+
+.rank-number {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: var(--text-muted);
+    width: 40px;
+}
+
+.list-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.rank-info{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.rank-info strong {
+    color: var(--dark-forest);
+    font-size: 1.05rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.rank-score strong{
+    font-size: 1.1rem;
+    color: var(--bright-green);
+    font-weight: 900;
+}
+
+.rank-score small{
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-weight: bold;
+}
+
+.current-user-row {
+    background: var(--mid-green);
+    border: 2px solid var(--bright-green);
+    margin-top: 15px;
+}
+
+.current-user-row .rank-number, 
+.current-user-row .rank-info strong, 
+.current-user-row .rank-info span, 
+.current-user-row .rank-score small {
+    color: var(--white);
+}
+
+.current-user-row .rank-score strong {
+    color: var(--electric-green);
+}
+
+@media(max-width: 400px){
+    .podium-avatar img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .podium-card h4 {
+        font-size: 0.8rem;
+    }
+
+    .podium-card p {
+        font-size: 0.5rem;
+    }
+
+    .rank-item{
+        padding: 8px 10px;
+    }
+
+    .rank-info strong {
+        font-size: 0.7rem;
+    }
+
+    .rank-info span{
+        font-size: 0.5rem;
+    }
+
+    .rank-score strong{
+        font-size: 0.8rem;
+    }
+
+    .rank-score small{
+        font-size: 0.5rem;
+    }
+}

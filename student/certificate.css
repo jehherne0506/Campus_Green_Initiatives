@@ -1,0 +1,156 @@
+/* Preset variable for color */
+:root {
+    --mid-green: rgb(38 65 21);
+    --bright-green: #3D886F;
+    --cream: rgb(253 248 240);
+    --dark-forest: #213614;
+    --light-forest: #3A631B;
+    --white: #FFFFFF;
+    --text-muted: #94A3B8;
+    --gray-border: rgba(255, 255, 255, 0.1);
+    --electric-green: #00FF88;
+}
+
+/* Remove default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*  forces element to include its content, padding, and border in their specific height and width */
+    font-family: 'Roboto', sans-serif; 
+}
+
+h1, h2, h4 {
+    font-family: 'Poppins', sans-serif; 
+}
+
+.page-heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body{
+    font-family: "Georgia", serif;
+    background:#f2f2f2;
+    margin:0;
+}
+
+/* container to center certificate without affecting sidebar */
+.certificate-container{
+    display:flex;
+    width:100px;
+    margin:0 auto;
+}
+
+/* Certificate container */
+.certificate{
+    width: 90%;
+    max-width:750px;
+    background:#fdf8f0;
+    padding:40px;
+    border:8px solid #d4c6a5;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    text-align:center;
+    position:relative;
+    font-family: 'Playfair Display', serif;
+    margin: 3rem auto;
+}
+
+/* Inner border */
+.certificate:before{
+    content:"";
+    position:absolute;
+    top:15px;
+    left:15px;
+    right:15px;
+    bottom:15px;
+    border:2px solid #c9b58b;
+}
+
+/* Logo */
+.logo{
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+/* Title */
+.title{
+    font-size:40px;
+    margin:20px 0;
+    font-family: 'Cinzel', serif;
+    letter-spacing:2px;
+}
+
+.subtitle{
+    font-size:18px;
+    margin-bottom:5px;
+    font-family: 'Cinzel', serif;
+    letter-spacing:3px;
+}
+
+/* Name */
+.name{
+    font-size:46px;
+    font-weight:600;
+    margin:20px 0;
+    font-family: 'Playfair Display', serif;
+    color:#213614;
+}
+
+/* Description */
+.desc{
+    font-size:16px;
+    margin-bottom:30px;
+    font-family: 'Playfair Display', serif;
+    line-height:1.6;
+}
+
+/* Hours box */
+.hours-box{
+    display: inline-block;
+    border:2px solid #c9b58b;
+    padding:15px 50px;
+    margin-bottom:30px;
+    display: inline-block;
+}
+
+.hours-title{
+    font-size:14px;
+    margin-bottom: 5px;
+}
+
+.hours{
+    font-size:28px;
+    font-weight:bold;
+}
+
+/* Table */
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+th, td{
+    border:1px solid #c9b58b;
+    padding:10px;
+}
+
+th{
+    background:#eee7d6;
+}
+
+/* Button */
+.download-btn{
+    padding:10px 25px;
+    font-size:16px;
+    border:none;
+    background:#4a7c59;
+    color:white;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.download-btn:hover{
+    background:#365e44;
+}
